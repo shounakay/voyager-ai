@@ -1,5 +1,11 @@
 # voyager-ai
 
+## 1.1.0
+
+### Minor Changes
+
+- 99ead27: Added better auth config, server action for email signup
+
 ## 1.0.0
 
 ### Major Changes
