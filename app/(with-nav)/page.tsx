@@ -1,8 +1,14 @@
 import Image from "next/image";
 import { Hero } from "../_components/Hero";
 import { Nav } from "../_components/Nav";
+import { getSession } from "../lib/auth";
+import { headers } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getSession({
+    headers: await headers(),
+  });
+  console.log("!!!!Session:!!!!", session);
   return (
     <div className="flex flex-col flex-1 font-sans ">
       <Nav />

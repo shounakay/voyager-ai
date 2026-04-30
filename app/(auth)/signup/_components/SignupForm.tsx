@@ -1,8 +1,22 @@
 "use client";
 
 import { useAppForm } from "@/app/lib/form";
-import { formOptions } from "@tanstack/react-form-nextjs";
-import { z } from "zod";
+import { signUpEmail } from "@/app/lib/formActions";
+import { formOptions, initialFormState } from "@tanstack/react-form-nextjs";
+import { useActionState } from "react";
+import { email, z } from "zod";
+
+interface IFormDefaultValues {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const defaultValues: IFormDefaultValues = {
+  name: "",
+  email: "",
+  password: "",
+};
 
 const schema = z.object({
   name: z.string().min(5, "Name must be at least 5 characters long"),
@@ -11,13 +25,9 @@ const schema = z.object({
 });
 
 const formOpts = formOptions({
-  defaultValues: {
-    name: "",
-    email: "",
-    password: "",
-  },
+  defaultValues,
   onSubmit: (a) => {
-    console.log("onSubmit", a);
+    console.log("!!!!onSubmit!!!!", a);
   },
   validators: {
     onSubmit: schema,
@@ -28,8 +38,15 @@ export const SignupForm = () => {
   const { handleSubmit, AppField, AppForm, SubmitButton } = useAppForm({
     ...formOpts,
   });
+  console.log("initialFormState", initialFormState);
+  const [state, action, isPending] = useActionState(signUpEmail, null);
+  console.log("signup email state", { state, isPending });
   return (
-    <form className="flex flex-col gap-3 w-2/3">
+    <form
+      className="flex flex-col gap-3 w-2/3"
+      action={action}
+      onSubmit={handleSubmit}
+    >
       <AppField
         name="name"
         children={({ TextField }) => (

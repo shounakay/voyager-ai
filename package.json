@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "start": "next dev",
     "build": "next build",
-    "start": "next start",
+    "prod": "next start",
     "lint": "eslint"
   },
   "dependencies": {
@@ -14,6 +14,8 @@
     "@next/env": "^16.2.4",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@tanstack/react-devtools": "^0.10.2",
+    "@tanstack/react-form-devtools": "^0.2.22",
     "@tanstack/react-form-nextjs": "^1.29.0",
     "better-auth": "^1.6.9",
     "dotenv": "^17.4.2",

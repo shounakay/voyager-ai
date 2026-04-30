@@ -2,7 +2,7 @@ import { useFormContext } from "@/app/lib/form";
 
 export const SubmitButton = ({ label }: { label: string }) => {
   const { Subscribe, state } = useFormContext();
-  console.log("state", state);
+  console.log("Submit button state", state);
   return (
     <Subscribe
       selector={(state) => [state.canSubmit, state.isSubmitting]}
